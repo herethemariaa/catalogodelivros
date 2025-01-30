@@ -1,0 +1,180 @@
+/* style.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: #f8fafc;
+    color: #1e293b;
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 2rem;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2.2rem;
+    color: #176585;
+    margin-bottom: 2rem;
+    letter-spacing: -0.05em;
+}
+#search-bar {
+    width: 100%;
+    max-width: 500px;
+    margin: 1rem auto;
+    padding: 0.8rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    display: block;
+    transition: all 0.2s ease;
+}
+
+#search-bar:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+#add-book {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1.5rem auto;
+    padding: 0.8rem 1.5rem;
+    font-size: 1.1rem;
+    background: #90b199;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    gap: 0.5rem;
+}
+
+#add-book:hover {
+    background: #6c8873;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 6px rgba(59, 130, 246, 0.2);
+}
+
+#add-book:active {
+    transform: translateY(0);
+}
+
+/* Container do formulário */
+#form {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#form.hidden {
+    display: none;
+}
+
+#form:not(.hidden) {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Estilização dos inputs */
+#form input {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1.2rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+#form input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+#form input::placeholder {
+    color: #94a3b8;
+}
+
+/* Botão de salvar */
+#bttn-save {
+    width: 100%;
+    padding: 0.8rem;
+    background: #10b981;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#bttn-save:hover {
+    background: #059669;
+    transform: translateY(-1px);
+}
+
+#bttn-save:active {
+    transform: translateY(0);
+}
+
+/* Galeria de Livros */
+#tela {
+    max-width: 1200px;
+    margin: 2rem auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
+}
+
+/* Card de cada livro */
+.livro-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    animation: slideIn 0.3s ease forwards;
+    border-left: 4px solid #36cecc;
+    transition: all 0.2s ease;
+}
+
+.livro-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.livro-card p {
+    margin: 0.5rem 0;
+    color: #475569;
+    font-size: 0.95rem;
+}
+
+.livro-card strong {
+    color: #1e293b;
+    font-weight: 600;
+}
+
+/* Animação de entrada */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Livros</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <h2>Biblioteca</h2>
+    <input type="text" id="search-bar" placeholder="Pesquisar por título, autor ou gênero..."> <button id="add-book">+</button>
+    <div id="form" class="hidden">
+        <input type="text" placeholder="Título" id="title">
+        <input type="text" placeholder="Autor" id="author">
+        <input type="text" placeholder="Gênero" id="gender">
+        <input type="date" placeholder="Data da Publicação" id="date-publication">   
+        <input type="text" placeholder="Avaliação" id="rating">
+        <button id="bttn-save">Adicionar</button>
+    </div>
+    <div id="tela"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
