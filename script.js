@@ -1,4 +1,4 @@
-function catalogo(titulo, autor, genero, anoPublicacao, avaliacao) {
+function catalogo(titulo, autor, genero, anoPublicacao, avaliacao) { // parametros determinados por ordem em um objeto. esse objeto irá servir pra transformar futuros dados em strings e trabalhar outros conceritos nele
     return {
         titulo: titulo,
         autor: autor,
@@ -9,7 +9,7 @@ function catalogo(titulo, autor, genero, anoPublicacao, avaliacao) {
 }
 // salvar livros no storage
 function salvarLivros() {
-    const livros = []
+    const livros = [] //storage usa listas para armazenar dados. nesse caso, é necessário criar essa variável com um array aonde adiciona os elementos com o .push. esses elementos estão relacionados com os objetos
     document.querySelectorAll('.livro-card').forEach(livro => {
         livros.push({
             titulo: livro.querySelector('[data-titulo]').textContent,
@@ -41,11 +41,9 @@ function carregarLivros() {
     })
 }
 
-document.addEventListener('DOMContentLoaded', carregarLivros)
 document.getElementById('add-book').addEventListener('click', () => {
     document.getElementById('form').classList.remove('hidden')
 })
-
 // salvar novo livro
 document.getElementById('bttn-save').addEventListener('click', () => {
     const title = document.getElementById('title').value
@@ -59,18 +57,20 @@ document.getElementById('bttn-save').addEventListener('click', () => {
         return
     }
 
+    const novoLivro = catalogo(title, author, gender, year, rating)
     const livroCard = document.createElement('div')
     livroCard.className = 'livro-card'
     livroCard.innerHTML = `
-        <p><strong>Título:</strong> <span data-titulo>${title}</span></p>
-        <p><strong>Autor:</strong> <span data-autor>${author}</span></p>
-        <p><strong>Gênero:</strong> <span data-genero>${gender}</span></p>
-        <p><strong>Ano:</strong> <span data-ano>${year}</span></p>
-        <p><strong>Avaliação:</strong> <span data-avaliacao>${rating}</span></p>
+        <p><strong>Título:</strong> <span data-titulo>${novoLivro.titulo}</span></p>
+        <p><strong>Autor:</strong> <span data-autor>${novoLivro.autor}</span></p>
+        <p><strong>Gênero:</strong> <span data-genero>${novoLivro.genero}</span></p>
+        <p><strong>Ano:</strong> <span data-ano>${novoLivro.anoPublicacao}</span></p>
+        <p><strong>Avaliação:</strong> <span data-avaliacao>${novoLivro.avaliacao}</span></p>
     `
-
+    //exibe card na tela
     document.getElementById('tela').appendChild(livroCard)
-    salvarLivros() // atualiza dados
+
+    salvarLivros() // atualiza dados no localstorage
 
     // limpa campos e oculta formulário
     document.getElementById('form').reset()
@@ -93,4 +93,6 @@ function filtrarLivros() {
         }
     })
 }
+document.addEventListener('DOMContentLoaded', carregarLivros);
+
 document.getElementById('search-bar').addEventListener('input', filtrarLivros)
